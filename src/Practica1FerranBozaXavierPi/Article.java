@@ -18,37 +18,21 @@ public class Article{
 		this.nom = nom;
 	}
 	
-	public int getCodi(){
-		return codi;
-	}
-	public float getPreuCost(){
-		return preuCost;
-	}
-	public float getPreuPublic(){
-		return preuPublic;
-	}
-	public String getNom(){
-		return nom;
-	}
+	public int getCodi(){return codi;}
+	public float getPreuCost(){return preuCost;}
+	public float getPreuPublic(){return preuPublic;}
+	public String getNom(){return nom;}
 	
-	public void setCodi(int codi){
-		this.codi = codi;
-	}
-	public void setPreuCost(float preuCost){
-		this.preuCost = preuCost;
-	}
-	public void setPreuPublic(float preuPublic) {
-		this.preuPublic = preuPublic;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
+	public void setCodi(int codi){this.codi = codi;}
+	public void setPreuCost(float preuCost){this.preuCost = preuCost;}
+	public void setPreuPublic(float preuPublic) {this.preuPublic = preuPublic;}
+	public void setNom(String nom) {this.nom = nom;}
 	
-	
-	public String toString(){
-		return "ID: "+codi+", Nom: "+nom+", Cost: "+preuCost+", Preu: "+preuPublic;
+	@Override
+	public String toString() {
+		return "Article [codi=" + codi + ", nom=" + nom + ", preuCost=" + preuCost + ", preuPublic=" + preuPublic + "]";
 	}
-	
+
 	public boolean equals(Object o){
 		if(o instanceof Article){
 			if(((Article) o).codi == this.codi){
