@@ -28,19 +28,33 @@ public class Empresa {
 	
 	public boolean addArticle(Article art) {
 		if (art instanceof Propi) {
+			for(int i = 0; i < qPropis; i++){
+				if(art.equals(articles[0][i])){
+					throw new IllegalArgumentException("Ja esta lartice en qquetio");
+				}
+			}
 			if (articles[0].length > qPropis + 1) {
 				articles[0][qPropis] = art;
 				qPropis++;
+				
 				return true;
+			}else{
+				throw new ArrayIndexOutOfBoundsException();
 			}
-		} else {
-			if (articles[0].length > qAdicionals + 1) {
+		}
+		if (art instanceof Addicional){
+			for(int i = 0; i < qAdicionals; i++){
+				if(art.equals(articles[1][i])){
+					throw new IllegalArgumentException("Ja esta lartice en qquetio");
+				}
+			}
+			if (articles[1].length > qAdicionals + 1) {
 				articles[1][qAdicionals] = art;
 				qAdicionals++;
-				return true;
-				
-				//TODO1: hshffas;
-				
+				((Addicional) art).getProveidor();
+				return true;	
+			}else{
+				throw new ArrayIndexOutOfBoundsException();
 			}
 		}
 		return false;
@@ -85,6 +99,17 @@ public class Empresa {
 	//elevat.
 	
 	public boolean teArticle(int codi){
+		
+		for(int i = 0; i < qPropis; i++){
+			if(articles[0][i].getCodi() == codi){
+				return true;
+			}
+		}
+		for(int i = 0; i < qAdicionals; i++){
+			if(articles[1][i].getCodi() == codi){
+				return true;
+			}
+		}
 		return false;
 	}
 	// mitjançant una expressió booleana ha
@@ -108,6 +133,8 @@ public class Empresa {
 	} 
 	//elimina, si existeix, el proveïdor del
 	// magatzem. En cas contrari llança una excepció.
+	
+	
 	public Map<Integer,Integer> productesProveïdor(){
 		return null;
 		

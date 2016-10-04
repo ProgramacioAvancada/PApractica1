@@ -42,8 +42,10 @@ public class Ingredient {
 			if(((Ingredient) o).codi == this.codi){
 				return true;
 			}
+			return false;
 		}
-		throw new IllegalArgumentException ("No és un ingredient");
+		return false;
+		//throw new IllegalArgumentException ("No és un ingredient");
 	}
 	
 

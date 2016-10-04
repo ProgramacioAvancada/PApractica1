@@ -38,8 +38,10 @@ public class Article{
 			if(((Article) o).codi == this.codi){
 				return true;
 			}
+			return false;
 		}
-		throw new IllegalArgumentException ("No és un article");
+		return false;
+		//throw new IllegalArgumentException ("No és un article");
 	}
 	
 	public float porcentatgeGanancia(){
