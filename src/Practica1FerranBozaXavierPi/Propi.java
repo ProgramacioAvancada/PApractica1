@@ -1,9 +1,5 @@
 package Practica1FerranBozaXavierPi;
 
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
 public class Propi extends Article {
 
 	private Node ingredients;
@@ -95,7 +91,7 @@ public class Propi extends Article {
 			Node aux = ingredients;
 			do {
 				if (aux.getQuantitat() < 10) {
-					aux.setQuantitat(aux.getQuantitat() + unitats);
+					aux.setQuantitat(aux.getQuantitat()+unitats);
 				}
 				aux = aux.getSeguent();
 			} while (aux != null);
@@ -105,52 +101,27 @@ public class Propi extends Article {
 	public void eliminarIngredients() {
 		if (ingredients == null) {
 			throw new IllegalArgumentException("No hi ha cap ingredient");
-		}
+		} 
 		Node aux = ingredients.getSeguent();
 		if (aux == null) {
 			throw new IllegalArgumentException("Només hi ha un ingredient");
-		}
-		Node n1;
-		Node n2;
-		if (ingredients.getQuantitat() > aux.getQuantitat()) {
-			n1 = aux;
-			n2 = ingredients;
-		} else {
-			n1 = ingredients;
-			n2 = aux;
-		}
-		aux = aux.getSeguent();
-		do {
-			if (aux.getQuantitat() < n2.getQuantitat()) {
-				if (aux.getQuantitat() < n1.getQuantitat()) {
-					n2 = n1;
-					n1 = aux;
-				} else {
-					n2 = aux;
+		} 
+		else {
+			Node n1 = ingredients;
+			Node n2 = aux;
+			do {
+				if (aux.getQuantitat() < 10) {
+					aux.setQuantitat(aux.getQuantitat());
 				}
-			}
-
-		} while (aux != null);
-		this.remIngredient(n1.getIngredient());
-		this.remIngredient(n2.getIngredient());
+				aux = aux.getSeguent();
+			} while (aux != null);
+		}
 	}
 	// ha de donar de baixa els 2 ingredients que apareixen en menor quantitat.
 	// Si l’article només té un ingredient s’ha de llançar una excepció.
 
 	public void ingredientsMesQuantitat() {
-		if (this.ingredients.getSeguent().getIngredient() == null) {
-			throw new IllegalArgumentException("No té almenys 3 ingredients");
-		}
-		Node aux = ingredients;
-		SortedSet <Node> nodeSet = new TreeSet <Node>();
-		while(aux != null){
-			nodeSet.add(aux);
-			aux = aux.getSeguent();
-		}
-		for(int i = 0; i < 3; i++){
-			System.out.println(nodeSet.last());
-			nodeSet.remove(nodeSet.last());
-		}
+
 	}
 	// visualitza a pantalla tots els atributs dels 3 ingredients que formen
 	// l’article propi que apareixen en una proporció més elevada. Si l’article
@@ -165,7 +136,7 @@ public class Propi extends Article {
 
 }
 
-class Node implements Comparable{
+class Node {
 
 	private Ingredient i;
 	private int q;
@@ -204,53 +175,5 @@ class Node implements Comparable{
 	public void setSeguent(Node seg) {
 		this.seg = seg;
 	}
-	
-	public boolean equals (Object n){
-		if(n instanceof Node){
-			if(((Node) n).getIngredient().equals(this.getIngredient())){
-				return true;
-			}
-			return false;
-		}
-		return false;
-	}
-
-	@Override
-	public int compareTo(Object n) {
-		if(n instanceof Node){
-			if(this.getQuantitat() > ((Node)n).getQuantitat()){
-				return 1;
-			}
-			else{
-				return -1;
-			}
-		}
-		else{
-			throw new IllegalArgumentException("No és un node");
-		}
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
