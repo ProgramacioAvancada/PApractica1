@@ -1,6 +1,6 @@
 package Practica1FerranBozaXavierPi;
 
-public class Article{
+public class Article implements Comparable<Article>{
 	
 	private int codi;
 	private float preuCost;
@@ -41,10 +41,20 @@ public class Article{
 			return false;
 		}
 		return false;
-		//throw new IllegalArgumentException ("No és un article");
 	}
 	
 	public float porcentatgeGanancia(){
 		return 100*(preuPublic-preuCost)/preuCost;
+	}
+
+	@Override
+	public int compareTo(Article o) {
+		if(this.nom.compareTo(o.nom)<0){
+			return -1;
+		}else if(this.nom.compareTo(o.nom)>0){
+			return 1;
+		}else{
+			return 0;
+		}
 	}
 }

@@ -1,6 +1,6 @@
 package Practica1FerranBozaXavierPi;
 
-public class Ingredient {
+public class Ingredient{
 	
 	private int codi;
 	private String nom;
@@ -45,7 +45,6 @@ public class Ingredient {
 			return false;
 		}
 		return false;
-		//throw new IllegalArgumentException ("No és un ingredient");
 	}
 	
 
